@@ -10,6 +10,18 @@ import './assets/css/global.css'
 import axios from 'axios'
 // 设置baseURL,将所有接口公共部分抽取出来
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+
+// 在将axios挂载到vue原型之前添加下面的代码
+axios.interceptors.request.use(config => {
+  // 在请求发送到接口发出去之前, 先拦截下来进行处理, 我们这里在发送的axios封装过的request请求头上添加
+  // Authorization属性, 值为登录成功之后服务器回复过来的token
+  // 这里是为了权限控制访问接口
+  // 权限控制访问接口, 和导航守卫有些类似
+  // 因此访问哪些需要权限的接口的时候, 服务器会验证request中的请求头上是否有Authorization：token,如果为空
+  // 那么就不能 访问
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 // 将导入的axios放在Vue的原型上面，这样 Vue的实例就都可以通过this.$axios来
 Vue.prototype.$axios = axios
 
