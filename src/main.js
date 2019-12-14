@@ -6,6 +6,8 @@ import router from './router/router'
 import './plugins/element.js'
 // 导入全局样式
 import './assets/css/global.css'
+// 导入字体图标
+import './assets/fonts/iconfont.css'
 // 导入axios
 import axios from 'axios'
 // 设置baseURL,将所有接口公共部分抽取出来

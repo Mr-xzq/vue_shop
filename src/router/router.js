@@ -6,13 +6,30 @@ import VueRouter from 'vue-router'
 import Login from '@/components/Login.vue'
 // 导入Home组件, 方便跳转路由
 import Home from '@/components/Home.vue'
+// 导入Welcome组件,跳转路由
+import Welcome from '@/components/Welcome.vue'
+import Users from '@/components/user/Users.vue'
 // 在vue上使用router
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
-  { path: '/home', component: Home }
+  {
+    path: '/home',
+    component: Home,
+    redirect: '/welcome',
+    children: [
+      {
+        path: '/welcome',
+        component: Welcome
+      },
+      {
+        path: '/users',
+        component: Users
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
