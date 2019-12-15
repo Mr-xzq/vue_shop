@@ -20,6 +20,7 @@
         <!-- unique-opened默认值是fasle,只要选定为true,那么就会同时只能打开一个菜单 -->
         <!-- 注意：不能unique-opened = "true"这样设置的是字符串,要么直接写unique-opened = "unique-opened"
         或者 unique-opened或者 :unique-opened = true-->
+        <!-- 这里的default-active表示选中的是哪一项 -->
         <el-menu
           background-color="#333744"
           text-color="#fff"
@@ -40,6 +41,7 @@
               <span>{{item.authName}}</span>
             </template>
             <!-- 二级子菜单 -->
+            <!-- 这里的 :index后面配置的就是点击之后路由的指向 -->
             <el-menu-item
               :index="'/' + subItem.path"
               v-for="subItem in item.children"

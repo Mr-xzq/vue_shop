@@ -69,11 +69,11 @@ export default {
           // 解构赋值,去对象中找到属性名相同的,直接
           const { data: res } = await this.$axios.post('login', this.loginForm)
           if (res.meta.status !== 200) {
-            this.$messege.error('登录失败')
+            this.$message.error('登录失败')
             this.loginForm.password = ''
             // console.log('登录失败')
           } else {
-            this.$messege.success('登录成功')
+            this.$message.success('登录成功')
 
             // 如果我们登录成功,服务器像我们发送的数据中就会有token这个key
             // 以后我们再发送请求时,只要包含这个字段且value对应的上,那么就无须在输入账号密码
